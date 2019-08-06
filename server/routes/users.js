@@ -34,10 +34,10 @@ router.post('/register',(req,res,next)=>{
 
 
 router.post('/login',(req,res,next)=>{
-    const username = req.body.username
-    const  password = req.body.password    
+    const userName = req.body.userName
+    const  password = req.body.password  
 
-     User.getUserByUsername(username, (err, user)=>{
+     User.getUserByUsername(userName, (err, user)=>{
         if(err) throw err
         else if(!user){
             return res.json({success: false, msg:"user not found"})
@@ -48,8 +48,8 @@ router.post('/login',(req,res,next)=>{
                     console.log("failed",err)
                 }
                 else{
-                    console.log(data)
-                    res.json({success:data,username:user.name})
+                    console.log(data,user)
+                    res.json({success:data,email:user.email,name:user.userName})
                 }
             })
          }

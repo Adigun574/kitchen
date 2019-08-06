@@ -42,9 +42,9 @@ module.exports.getUserByUsername = function(username, callback){
             console.log(err)
         }
         else{
-            console.log("you can now authenticate users")
+            //console.log("you can now authenticate users")
             const db = client.db('kitchen')
-            const query = { 'username': username}
+            const query = { 'userName': username}
             db.collection('users').findOne(query,callback)
             client.close()
         }
@@ -61,7 +61,7 @@ module.exports.addUser = function(newUser, callback){
                     console.log(err)
                 }
                 else{
-                    console.log("you can now register users")
+                    //console.log("you can now register users")
                     const db = client.db('kitchen')
                     db.collection('users').insertOne(newUser,callback)
                     client.close()
